@@ -3,7 +3,7 @@ const logPath = path.join(__dirname, '../../logs/development.log');
 
 module.exports = {
   web: {
-    port: 3000
+    port: 3001
   },
   logging: {
     appenders: {

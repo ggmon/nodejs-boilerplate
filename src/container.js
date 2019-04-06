@@ -4,7 +4,7 @@ const { scopePerRequest } = require('awilix-express');
 const config = require('../config');
 const Application = require('./app/Application');
 
-const Server = require('./interfaces/http/server');
+const Server = require('./interfaces/http/Server');
 const router = require('./interfaces/http/router');
 const loggerMiddleware = require('./interfaces/http/logging/loggerMiddleware');
 const errorHandler = require('./interfaces/http/errors/errorHandler');
@@ -35,8 +35,12 @@ container
   .register({
     containerMiddleware: asValue(scopePerRequest(container)),
     errorHandler: asValue(config.production ? errorHandler : devErrorHandler)
+  })
+  .register({
+    constVal: asValue(42)
   });
 
+console.log(container.registrations)
 
 module.exports = container;
 

@@ -1,16 +1,17 @@
 const { Router } = require('express');
-// const { inject } = require('awilix-express');
-// const Status = require('http-status');
-
-const TestController = {
-  get router() {
-    const router = Router();
-    router.get('/', function (req, res){
-      res.send('Hello World');
-    });
-    return router;
+const { makeInvoker } = require('awilix-express');
+function makeController({ logger }) {
+  return {
+    index: (req, res) => {
+      logger.info('finally');
+      throw 'Boom!';
+      res.send('Heeloe wolw');
+    }
   }
+}
 
-};
 
-module.exports = TestController;
+const router = Router();
+router.get('/', makeInvoker(makeController)('index'));
+module.exports = router
+

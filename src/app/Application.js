@@ -1,5 +1,5 @@
 class Application {
-  constructor({ server, logger }) {
+  constructor({ server, logger, constVal }) {
     this.server = server;
     this.logger = logger;
   }
