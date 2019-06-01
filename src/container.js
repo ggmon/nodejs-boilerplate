@@ -2,6 +2,7 @@ const { createContainer, asClass, asFunction, asValue } = require('awilix');
 const { scopePerRequest } = require('awilix-express');
 
 const config = require('../config');
+console.log(config);
 const Application = require('./app/Application');
 
 const Server = require('./interfaces/http/Server');
@@ -11,7 +12,6 @@ const errorHandler = require('./interfaces/http/errors/errorHandler');
 const devErrorHandler = require('./interfaces/http/errors/devErrorHandler');
 
 const logger = require('./infra/logging/logger');
-
 
 const container = createContainer();
 
@@ -40,7 +40,6 @@ container
     constVal: asValue(42)
   });
 
-console.log(container.registrations)
 
 module.exports = container;
 
